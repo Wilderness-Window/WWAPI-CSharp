@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.wilderness-window.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="WWAPI" targetNamespace="http://www.wilderness-window.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.wilderness-window.com/">
+      <xsd:element name="GetAvailabilityByDay">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PropertyList" type="xsd:string" />
+            <xsd:element name="StartDate" type="xsd:dateTime" />
+            <xsd:element name="NumberOfDays" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAvailabilityByDayResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AvailabilityByDay">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" name="ErrorResponse_Response">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrorResponse">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="ErrorCode">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="ErrorDescription">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="2000" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" name="AvailabilityByDay_Response">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="unbounded" name="AvailabilityByDay">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="Date" type="xsd:dateTime" />
+                              <xsd:element name="PropertyCode">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="200" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="RoomType">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="Family" />
+                                    <xsd:enumeration value="Twin" />
+                                    <xsd:enumeration value="_Double" />
+                                    <xsd:enumeration value="Honeymoon" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="RoomsAvail" type="xsd:long" />
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetWildernessProperties">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetWildernessPropertiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Response">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" name="ErrorResponse_Response">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrorResponse">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="ErrorCode">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="ErrorDescription">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="2000" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" name="WildernessSuppliers_Response">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="unbounded" name="WildernessSuppliers">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="SupplierCode">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="SupplierName">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="200" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="SupplierLocation" nillable="true">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="200" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                              <xsd:element name="Country" nillable="true">
+                                <xsd:simpleType>
+                                  <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="200" />
+                                  </xsd:restriction>
+                                </xsd:simpleType>
+                              </xsd:element>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authentication">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAvailabilityByDayRequest">
+    <wsdl:part name="request_header" element="tns:authentication" />
+    <wsdl:part name="parameters" element="tns:GetAvailabilityByDay" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailabilityByDayResponse">
+    <wsdl:part name="result" element="tns:GetAvailabilityByDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWildernessPropertiesRequest">
+    <wsdl:part name="request_header" element="tns:authentication" />
+    <wsdl:part name="parameters" element="tns:GetWildernessProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetWildernessPropertiesResponse">
+    <wsdl:part name="result" element="tns:GetWildernessPropertiesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WWAPIPortType">
+    <wsdl:operation name="GetAvailabilityByDay">
+      <wsdl:documentation>
+      </wsdl:documentation>
+      <wsdl:input message="tns:GetAvailabilityByDayRequest" />
+      <wsdl:output message="tns:GetAvailabilityByDayResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWildernessProperties">
+      <wsdl:documentation>
+      </wsdl:documentation>
+      <wsdl:input message="tns:GetWildernessPropertiesRequest" />
+      <wsdl:output message="tns:GetWildernessPropertiesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WWAPISoap" type="tns:WWAPIPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailabilityByDay">
+      <soap:operation soapAction="http://www.wilderness-window.com/GetAvailabilityByDay" />
+      <wsdl:input>
+        <soap:header message="tns:GetAvailabilityByDayRequest" part="request_header" use="literal" />
+        <soap:body use="literal" parts="parameters" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWildernessProperties">
+      <soap:operation soapAction="http://www.wilderness-window.com/GetWildernessProperties" />
+      <wsdl:input>
+        <soap:header message="tns:GetWildernessPropertiesRequest" part="request_header" use="literal" />
+        <soap:body use="literal" parts="parameters" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WWAPI">
+    <wsdl:port name="WWAPIPort" binding="tns:WWAPISoap">
+      <soap:address location="http://www.wilderness-window.com/ws/WWAPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
