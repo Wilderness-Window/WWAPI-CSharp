@@ -57,6 +57,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="WildernessAvailability.cs" />
+    <Compile Include="WildernessProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
